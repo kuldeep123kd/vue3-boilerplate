@@ -1,11 +1,10 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-
-const routerOptions = [
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../components/Home.vue'
+const routes = [
   {
     path: '/',
     name: 'Home',
-    componentPath: 'Home'
+    component: Home
   },
   {
     path: '/about',
@@ -13,23 +12,12 @@ const routerOptions = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    // component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-    componentPath: 'About'
+    component: () => import(/* webpackChunkName: "about" */ '../components/About.vue')
   }
-];
+]
 
-const routes = routerOptions.map(route => {
-  return {
-      ...route,
-      component: () => import(`@/components/${route.componentPath}.vue`)
-  }
-})
-
-Vue.use(VueRouter)
-
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 
