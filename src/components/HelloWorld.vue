@@ -30,7 +30,7 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
     <h1 style="color: red; font-size: 18px;">{{ counter }}</h1>
-    <button @click="addOne"></button>
+    <button @click="addOne">Add 1</button>
   </div>
 </template>
 
